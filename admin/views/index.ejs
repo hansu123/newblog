@@ -1,0 +1,100 @@
+<%include header%>
+<body style="background:#e8e8e8">
+
+<div class="container">
+
+<!--header开始-->
+<div class="row">
+
+<div class="col-12">
+ 
+<ul class="nav bg-dark justify-content-around">
+
+<li class="nav-item"><a href="#" class="navbar-brand"><span class="text-white mr-2 h6">超级管理员:</span><img src="../../img/author2.jpg" style="width:30px;height:30px;border-radius:50%;"><span class="text-white ml-3 dropdown " data-toggle="dropdown h6">hansu</span><div class="dropdown-menu">
+<p>个人信息</p>
+<p>切换账户</p>
+<p>退出登录</p>
+</div></a></li>
+<li class="nav-item d-flex"><a href="#" class="nav-link text-white"></a></li>
+<li class="nav-item"><input type="text" class="form-control"></li>
+</ul>
+
+
+
+</div>
+</div>
+<!--header结束-->
+
+<!--左边列表开始-->
+<div class="row d-flex m-0">
+
+<div class="col-2 bg-white align-content-strech">
+        <div id="parent">
+
+                <div class="card border-0">
+                    <div class="card-header text-center" >
+            <a href="#coll-one" class="card-link  text-dark"  data-toggle="collapse">管理员管理</a>
+                    </div>
+            
+                    <div  data-parent="#parent" class="collapse" id="coll-one"><div class="card-body text-center"><a href="/admin/adminList"  target="mainFrame" class="card-link text-dark h7">管理员列表</a></div></div>
+            
+                </div>
+            
+                <div class="card border-0">
+                    <div class="card-header text-center" >
+                        <a href="#coll-two" class="card-link text-dark"  data-toggle="collapse">文章管理</a>
+                    </div>
+            
+                    <div  data-parent="#parent" class="collapse" id="coll-two"><div class="card-body text-center"><a href="" class="card-link text-dark h7">文章列表</a></div></div>
+            
+                </div>
+            
+            
+                <div class="card border-0">
+                    <div class="card-header text-center" >
+                        <a href="#coll-three" class="card-link text-dark"  data-toggle="collapse">用户管理</a>
+                    </div>
+            
+                    <div data-parent="#parent" class="collapse" id="coll-three">
+                        <div class="card-body text-center"><a href="" class="card-link text-dark h7">用户列表</a></div>
+                    </div>
+            
+                </div>
+                <div class="card border-0">
+                        <div class="card-header text-center" >
+                            <a href="#coll-four" class="card-link text-dark"  data-toggle="collapse">评论管理</a>
+                        </div>
+                
+                        <div data-parent="#parent" class="collapse" id="coll-four">
+                            <div class="card-body text-center"><a href="" class="card-link text-dark h7">评论列表</a></div>
+                        </div>
+                
+                    </div>
+            
+            </div>
+
+</div>
+<!--左边列表结束-->
+
+
+<div class="col-10 px-0">
+
+    <div style="height:800px;">
+<iframe src="/admin/welcome" scrolling="0"  frameBorder="0" id="mainFrame" name="mainFrame" style="width:100%;height:800px">
+<p>欢迎来到后台管理</p>
+</iframe>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+</body>
+</html>
