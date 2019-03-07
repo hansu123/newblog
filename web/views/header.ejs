@@ -1,50 +1,108 @@
+<!DOCTYPE HTML>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>blog</title>
-    <link type="text/css" rel="stylesheet" href="../../css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="../../css/main.css">
-    <script src="../../js/jquery.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
+	<head>
+		<title>hansu的个人博客</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+        
+        <!--markdown样式-->
+        <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
 
-</head>
-<body>
-<div class="container-fluid" style="background:#FFF;">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css"><!--高亮-->
+    
+        <link rel="stylesheet" href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css">
+    
 
-    <!--导航开始-->
-    <div class="navbar navbar-expand-sm navbar-dark bg-dark mx-4">
+        <!--网站icon-->
+		<link rel="icon" href="https://hansu-1253325863.cos.ap-shanghai.myqcloud.com/newblog/web/icon-img/icon.png">
+		
 
-        <a href="#" class="nav-brand nav-link text-light"><img src="../../img/logo.jpg" class="w-4 rounded"></a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#demo">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+	</head>
+	<body>
 
-        <div class="collapse navbar-collapse" id="demo">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-            <ul class="navbar-nav w-75">
-                <li class="nav-item ml-lg-5"><a href="#" class="nav-link">首页</a></li>
-                <li class="nav-item ml-lg-5"><a href="#" class="nav-link">所有课程</a></li>
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="#">Hansu Blog</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="#">首页</a></li>
+								<li><a href="#">个人demo</a></li>
+								<li><a href="#">常用代码块</a></li>
+								<li><a href="#">更多资源</a></li>
+								
+							</ul>
+						</nav>
+						<nav class="main">
+								<ul>
+									<li class="search">
+										<a class="fa-search" href="#search">Search</a>
+										<form id="search" method="get" action="#">
+											<input type="text" name="query" placeholder="Search" />
+										</form>
+									</li>
+									<li class="menu">
+										<a class="fa-bars" href="#menu">Menu</a>
+									</li>
+								</ul>
+							</nav>
+					</header>
 
+				<!-- Menu -->
+					<section id="menu">
 
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="search" name="query" placeholder="Search" />
+									<input type="hidden"/>
+								</form>
+							</section>
 
-                <li class="nav-item ml-lg-5"><a href="#" class="nav-link">最新课程</a></li>
-                <li class="nav-item ml-lg-5"><a href="#" class="nav-link">关于我们</a></li>
+						<!-- Links -->
+							<section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>首页</h3>
+										
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>个人demo</h3>
+											
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>常用代码块</h3>
+										
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>更多资源</h3>
+										
+										</a>
+									</li>
+								</ul>
+							</section>
 
-            </ul>
+						<!-- Actions -->
+							<section>
+								<ul class="actions vertical">
+									<li><a href="#" class="button big fit">Log In</a></li>
+								</ul>
+							</section>
 
-            <ul class="navbar-nav w-25 ">
-
-
-                <li class="nav-item d-flex align-items-stretch"><input type="text" class="p-0 pl-3 form-control rounded-0"><a class="d-inline-block"><img src="../../img/search.png" class="h-100"></a></li>
-                <li class="nav-item ml-3"><a class="nav-link text-light">登录</a></li>
-                <li class="nav-item ml-3"><a class="nav-link text-light">注册</a></li>
-            </ul>
-
-        </div>
-
-
-
-    </div>
+					</section>
+                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >hansu</a></div>

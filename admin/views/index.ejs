@@ -1,100 +1,145 @@
+<!DOCTYPE html>
 <%include header%>
+
 <body style="background:#e8e8e8">
 
-<div class="container">
 
-<!--header开始-->
-<div class="row">
+   
+        <div class="container-fluid p-0">
 
-<div class="col-12">
- 
-<ul class="nav bg-dark justify-content-around">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#"><img src="../../img/admin/logo.jpg" style="width:2rem;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-<li class="nav-item"><a href="#" class="navbar-brand"><span class="text-white mr-2 h6">超级管理员:</span><img src="../../img/author2.jpg" style="width:30px;height:30px;border-radius:50%;"><span class="text-white ml-3 dropdown " data-toggle="dropdown h6">hansu</span><div class="dropdown-menu">
-<p>个人信息</p>
-<p>切换账户</p>
-<p>退出登录</p>
-</div></a></li>
-<li class="nav-item d-flex"><a href="#" class="nav-link text-white"></a></li>
-<li class="nav-item"><input type="text" class="form-control"></li>
-</ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
 
 
-
-</div>
-</div>
-<!--header结束-->
-
-<!--左边列表开始-->
-<div class="row d-flex m-0">
-
-<div class="col-2 bg-white align-content-strech">
-        <div id="parent">
-
-                <div class="card border-0">
-                    <div class="card-header text-center" >
-            <a href="#coll-one" class="card-link  text-dark"  data-toggle="collapse">管理员管理</a>
-                    </div>
-            
-                    <div  data-parent="#parent" class="collapse" id="coll-one"><div class="card-body text-center"><a href="/admin/adminList"  target="mainFrame" class="card-link text-dark h7">管理员列表</a></div></div>
-            
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                hansu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">详细信息</a>
+                                <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">切换用户<span
+                                        class="glyphicon glyphicon-align-left" aria-hidden="true"></span></a>
+                                <a class="dropdown-item" href="#">退出登录</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white">消息<span class="badge badge-danger px-1 ml-2">4</span></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control rounded-0" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-info rounded-0" type="submit"><i class="icon-search"></i></button>
+                        <button class="btn btn-dark rounded-0" type="submit"><i class="icon-twitter"></i></button>
+                        <button class="btn btn-dark rounded-0" type="submit"><i class="icon-github-sign"></i></button>
+                    </form>
                 </div>
-            
-                <div class="card border-0">
-                    <div class="card-header text-center" >
-                        <a href="#coll-two" class="card-link text-dark"  data-toggle="collapse">文章管理</a>
-                    </div>
-            
-                    <div  data-parent="#parent" class="collapse" id="coll-two"><div class="card-body text-center"><a href="" class="card-link text-dark h7">文章列表</a></div></div>
-            
-                </div>
-            
-            
-                <div class="card border-0">
-                    <div class="card-header text-center" >
-                        <a href="#coll-three" class="card-link text-dark"  data-toggle="collapse">用户管理</a>
-                    </div>
-            
-                    <div data-parent="#parent" class="collapse" id="coll-three">
-                        <div class="card-body text-center"><a href="" class="card-link text-dark h7">用户列表</a></div>
-                    </div>
-            
-                </div>
-                <div class="card border-0">
-                        <div class="card-header text-center" >
-                            <a href="#coll-four" class="card-link text-dark"  data-toggle="collapse">评论管理</a>
+            </nav>
+
+        </div>
+   
+
+    <div class="container-fluid p-0">
+
+
+        <div class="row m-0">
+
+            <div class="col-lg-2 col-md-2 bg-dark align-content-strech px-0">
+                <div id="parent">
+
+                    <div class="card border-0 bg-dark">
+                        <div class="card-header">
+                            <a href="#coll-one" class="card-link  text-white" data-toggle="collapse"><i class="icon-user mr-2"></i>管理员管理</a>
                         </div>
-                
+
+                        <div data-parent="#parent" class="collapse" id="coll-one">
+                            <div class="card-body text-center"><a href="adminList" target="mainFrame" class="card-link text-secondary h7"><i class="icon-group mr-2"></i>管理列表</a></div>
+                        </div>
+
+                    </div>
+
+                    <div class="card border-0 bg-dark">
+                        <div class="card-header ">
+                            <a href="#coll-two" class="card-link text-white" data-toggle="collapse"><i class="icon-book mr-2"></i>文章管理<span class="badge badge-danger float-right">hot</span></a>
+                        </div>
+
+                        <div data-parent="#parent" class="collapse" id="coll-two">
+                            <div class="card-body text-center"><a href="articleList"  target="mainFrame"  class="card-link text-secondary h7"><i class="icon-list mr-2"></i>文章列表</a></div>
+
+                            <div class="card-body text-center"><a href="articleAdd"  target="mainFrame"  class="card-link text-secondary h7"><i class="icon-pencil mr-2"></i>文章添加</a></div>
+                        </div>
+
+                       
+
+                    </div>
+
+
+                    <div class="card border-0  bg-dark">
+                        <div class="card-header ">
+                            <a href="#coll-three" class="card-link text-white" data-toggle="collapse"><i class="icon-user mr-2"></i>用户管理</a>
+                        </div>
+
+                        <div data-parent="#parent" class="collapse" id="coll-three">
+                            <div class="card-body text-center"><a href="userList" target="mainFrame" class="card-link text-secondary h7"><i class="icon-group mr-2"></i>用户列表</a></div>
+                        </div>
+
+                    </div>
+                    <div class="card border-0  bg-dark">
+                        <div class="card-header ">
+                            <a href="#coll-four" class="card-link text-white" data-toggle="collapse"><i class="icon-comment mr-2"></i>评论管理</a>
+                        </div>
+
                         <div data-parent="#parent" class="collapse" id="coll-four">
-                            <div class="card-body text-center"><a href="" class="card-link text-dark h7">评论列表</a></div>
+                            <div class="card-body text-center"><a href="commentList" target="mainFrame" class="card-link text-secondary h7"><i class="icon-comments mr-2"></i>评论列表</a></div>
                         </div>
-                
+
                     </div>
-            
+
+                    <div class="card border-0  bg-dark">
+                            <div class="card-header"> 
+                                <a href="#coll-five" class="card-link text-white" data-toggle="collapse"><i class="icon-cog mr-2"></i>系统设置</a>
+                            </div>
+    
+                            <div data-parent="#parent" class="collapse" id="coll-five">
+                                <div class="card-body text-center"><a href="commentList" class="card-link text-secondary h7">评论列表</a></div>
+                            </div>
+    
+                        </div>
+
+                </div>
+
+            </div>
+            <!--左边列表结束-->
+
+
+            <div class="col-10 px-0 bg-white">
+
+                <div style="height:1200px;">
+                    <iframe src="welcome" scrolling="no" frameBorder="0" id="mainFrame" name="mainFrame" style="width:100%;height:100%;">
+                        <p>欢迎来到后台管理</p>
+                    </iframe>
+
+                </div>
+
             </div>
 
-</div>
-<!--左边列表结束-->
 
 
-<div class="col-10 px-0">
+        </div>
 
-    <div style="height:800px;">
-<iframe src="/admin/welcome" scrolling="0"  frameBorder="0" id="mainFrame" name="mainFrame" style="width:100%;height:800px">
-<p>欢迎来到后台管理</p>
-</iframe>
+
+
+
 
     </div>
 
-</div>
-
-</div>
-
-
-
-
-
-</div>
-
 </body>
+
 </html>

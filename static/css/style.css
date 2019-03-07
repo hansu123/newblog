@@ -1,0 +1,181 @@
+/**
+* Demo Stuff
+*/
+
+
+@media screen and (max-width:414px)
+{
+h1 {
+  color: #FFF;
+  font-weight: 400;
+  font-size: 2em;
+  margin: 1em 0;
+}
+/**
+* iPhone
+* Credits: Flat, Scaleable CSS iPhone Illustration by Tom Hergenreter
+* http://codepen.io/TomHergenreter/details/qDywF/
+*/
+
+
+
+.iphone {
+  
+  border-radius: 1.875em;
+  position: relative;
+  display: inline-block;
+  background: #fff;
+
+}
+
+
+.iphone__screen {
+height:3.1rem;
+width:100%;
+background:#333;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+}
+/*导航大小*/
+/**
+* Navigation Defaults
+*/
+.nav {
+
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+.nav--active .nav {
+  opacity: 1;
+  background-color: #333;
+ 
+}
+.nav__list {
+  margin: 0;
+  padding: 10px;
+}
+.nav__item {
+  list-style-type: none;
+  text-align: left;
+  margin:1rem 0;
+}
+
+/*搜索框样式*/
+.nav__list>li:nth-child(1) input{
+
+background:url('https://hansu-1253325863.cos.ap-shanghai.myqcloud.com/docs/img/search.png') no-repeat;
+background-position:0.5rem center ;
+padding-left:2rem;
+border-radius:3rem;
+outline:none;
+color:#FFF;
+
+}
+.nav__link {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #FFFFFF;
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+/* Default navigation icon */
+.nav__trigger {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  right: 1.5rem;
+  top: 0.5rem;
+  z-index: 200;
+} /*按钮样式*/
+.nav--active .nav__trigger {
+  opacity: 0.5;
+}
+.nav__icon {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 5px;
+  background-color: #FFFFFF;
+  -webkit-transition-property: background-color, -webkit-transform;
+  transition-property: background-color, -webkit-transform;
+  transition-property: background-color, transform;
+  transition-property: background-color, transform, -webkit-transform;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}/*按钮样式*/
+.nav__icon:before,
+.nav__icon:after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 5px;
+  position: absolute;
+  background: #FFFFFF;
+  -webkit-transition-property: margin, -webkit-transform;
+  transition-property: margin, -webkit-transform;
+  transition-property: margin, transform;
+  transition-property: margin, transform, -webkit-transform;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+.nav__icon:before {
+  margin-top: -10px;
+}
+.nav__icon:after {
+  margin-top: 10px;
+}
+/* Don't nest if you don't have to. */
+/**
+* Style #1
+*/
+.style-1 .nav {
+  position:fixed;  /*采用绝对定位,让弹出框始终处在屏幕中*/
+  top:0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  width: 80%;
+  height: 100%;/*高度保持100%*/
+}
+
+
+.style-1 .nav__link {
+  opacity: 0;
+  -webkit-transition-delay: 500ms;
+          transition-delay: 500ms;
+font-size:1rem;
+}
+.style-1 .nav--active .nav__link {
+  opacity: 1;
+}
+.style-1 .nav--active .nav {
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.style-1 .nav--active .nav__icon {
+  background: rgba(0, 0, 0, 0);
+}
+.style-1 .nav--active .nav__icon:before {
+  margin-top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.style-1 .nav--active .nav__icon:after {
+  margin-top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+
+}

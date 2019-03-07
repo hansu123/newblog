@@ -1,0 +1,92 @@
+<!-- Footer -->
+<section id="footer">
+	<ul class="icons">
+		<li>
+			<a href="#" class="fa-twitter">
+				<span class="label">Twitter</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="fa-facebook">
+				<span class="label">Facebook</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="fa-instagram">
+				<span class="label">Instagram</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="fa-rss">
+				<span class="label">RSS</span>
+			</a>
+		</li>
+		<li>
+			<a href="#" class="fa-envelope">
+				<span class="label">Email</span>
+			</a>
+		</li>
+	</ul>
+	<p class="copyright">&copy; Untitled. More Templates
+		<a href="http://www.cssmoban.com/" target="_blank" title="模板之家">hansu</a> - Collect from
+		<a href="http://www.cssmoban.com/" title="网页模板" target="_blank">hansu</a>.</p>
+</section>
+
+
+
+
+
+
+<div id="toTop">
+</div>
+
+
+</section>
+
+</div>
+
+<!-- Scripts -->
+<script src="../../js/jquery.min.js"></script>
+
+<script src="../../js/skel.min.js"></script>
+<script src="../../js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="../../js/main.js"></script>
+<script>
+
+
+
+	(function () {
+
+		$("#toTop").click(function (e) {
+
+			e.stopPropagation();
+           
+			$('html,body').animate({ scrollTop: 0 });
+
+		});
+
+		$(window).scroll(function () {
+
+
+			if ($(document).scrollTop() > 800) {
+
+				$("#toTop").stop().animate({opacity:1},100);
+
+
+			}
+
+			else {
+
+				$("#toTop").stop().animate({opacity:0},100);
+			}
+
+		})
+
+	}()
+	);
+
+
+
+
+</script>

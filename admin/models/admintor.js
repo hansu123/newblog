@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-mongoose.connect("mongodb://localhost/admin");
+mongoose.connect("mongodb://localhost/test",{ useNewUrlParser: true });
 
 var Schema = mongoose.Schema;
 

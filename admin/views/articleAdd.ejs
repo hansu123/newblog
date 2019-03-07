@@ -1,0 +1,211 @@
+<%include header%>
+
+    <body>
+
+        <div class="container-fluid p-0">
+            <!--面包屑开始-->
+            <div class="row m-0">
+                <nav class="col-12">
+
+                    <div class="breadcrumb">
+
+                        <div class="breadcrumb-item">
+                            <i class="icon-home mr-1"></i>Home</div>
+                        <div class="breadcrumb-item">文章管理</div>
+                        <div class="breadcrumb-item">文章列表</div>
+                        <div class="d-flex justify-content-end" style="flex-grow:1">
+                            <button class="btn btn-sm btn-danger float-right">
+                                <i class="icon-repeat"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </div>
+            <!--面包屑结束-->
+
+
+
+            <div class="row">
+                <div class="col-8 offset-2">
+
+
+
+
+                    <form action="add" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group row">
+                            <lable class="col-1">
+                                <span>作者:</span>
+                            </lable>
+                            <div class="col-2">
+                                <input type="text" class="form-control" name="author" placeholder="请输入作者">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <lable class="col-1">
+                                <span>标题:</span>
+                            </lable>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="title" placeholder="请输入标题">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <lable class="col-1">
+                                <span>摘要:</span>
+                            </lable>
+                            <div class="col-8">
+                                <textarea cols="100" rows="5" type="text" class="form-control" name="summary" maxlength="60" placeholder="请输入文章摘要,如果不写默认抓取前30个字"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <lable class="col-1">
+                                <span>分类:</span>
+                            </lable>
+                            <div class="col-4">
+                                <select type="text" class="form-control" name="cate">
+                                    <option value="CSS">CSS</option>
+                                    <option value="JS">JS</option>
+                                    <option value="Node.Js">Node.Js</option>
+                                    <option value="MarkDown">MarkDown</option>
+                                    <option value="PHP">PHP</option>
+                                    <option value="BootStrap">BootStrap</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group row">
+                            <lable class="col-1">
+                                <span>封面:</span>
+                            </lable>
+                            <div class="col-4">
+                                <input type="file" value="上传缩略图" name="img" id="file">
+                            </div>
+                        </div>
+
+                        <!--引入编辑器-->
+                        <div class="form-group" style="height:300px">
+                            <textarea name="field" id="MyID" cols="30" rows="10"></textarea>
+
+                        </div>
+                        <!--引入编辑器结束-->
+
+                        <div class="form-group row" style="margin-top:100px">
+                            <div class="col-12 text-center">
+                                <input type="button" class="btn btn-success" value="提交" id="btn">
+                                <button class="btn btn-success">本地保存</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+
+
+
+
+            <!--删除管理员模态框开始-->
+            <div class="modal fade" id="deleteAdmin">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header bg-default">
+                            <p>信息</p>
+                            <a class="btn-sm close" data-dismiss="modal">&times;</a>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <p>您确定要删除吗？</p>
+                            <div class="w-100 d-flex justify-content-end">
+                                <button class="btn btn-info">确定</button>
+                                <button class="btn btn-default ml-2" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+            <!--删除管理员模态框结束-->
+        </div>
+
+
+
+
+        <!--markdown编辑器配置-->
+        <script>
+
+            var simplemde = new SimpleMDE({
+                element: document.getElementById("MyID"),
+                blockStyles: {
+                    bold: "**",
+                    italic: "*",
+                    code: "```"
+                },
+                forceSync: true,
+                hideIcons: false,
+                indentWithTabs: true,
+                lineWrapping: true,
+                renderingConfig: {
+                    singleLineBreaks: false,
+                    codeSyntaxHighlighting: true // 需要highlight依赖
+                },
+                showIcons: true,
+                spellChecker: true
+            })
+
+
+
+
+
+            $("#btn").click(function () {
+                //console.log(document.getElementById("file").files[0]);
+                var testPlain = simplemde.value();
+                testMarkdown = simplemde.markdown(testPlain);
+       
+                var formdata = new FormData();
+                formdata.append("author", $("[name=author]").val());
+                formdata.append("title", $("[name=title]").val());
+                formdata.append("summary", $("[name=summary]").val());
+                formdata.append("cate", $("[name=cate]").val());
+                formdata.append("content", testMarkdown);
+                formdata.append("img", document.getElementById("file").files[0]);//不能写成$("#file")[0].files[0]
+
+              
+                $.ajax({
+                    url: "/admin/add",
+                    type: "post",
+                    data: formdata,
+
+                    contentType: false,
+                    //取消帮我们格式化数据，是什么就是什么
+                    processData: false,
+                    success: function (result) { console.log("ok"); }
+                })
+
+            })
+        </script>
+    </body>
+
+    </html>

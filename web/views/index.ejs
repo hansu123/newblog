@@ -1,382 +1,141 @@
-<!DOCTYPE html>
-<% include header%><!--将头部引入-->
+<% include header%>
+	<!-- Main -->
+	<div id="main"  data-mcs-theme="dark-thick" >
+
+		<!-- Post -->
+		<% for(var i in article){%>
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="#">
+								<%=article[i].title%>
+							</a>
+						</h2>
+						<p>
+							<%=article[i].summary%>
+						</p>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">
+							<%=article[i].postTime%>
+						</time>
+						<a href="#" class="author">
+							<span class="name">
+								<%=article[i].author%>
+							</span>
+							<img src="../../img/web/avatar.jpg" alt="" />
+						</a>
+					</div>
+				</header>
+				<a href="#" class="image featured">
+					<img src="../../upload/<%=article[i].cover_img%>" alt="" />
+				</a>
 
-    <!--banner开始-->
-    <div class="row p-4">
 
-<div class="col-lg-9">
+				<!--<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+				<footer>
+					<ul class="actions">
+						<li>
+							<a href="./detail?id=<%=article[i]._id%>" class="button big">继续阅读&nbsp;
+								<i class="fa fa-arrow-right"></i>
+							</a>
+						</li>
+					</ul>
+					<ul class="stats">
+						<li>
+							<a href="#">
+								<i class="fa fa-tags"></i>
+								<%=article[i].cate%>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-heart">
+								<%=article[i].n_comment%>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-comment">
+								<%=article[i].n_like%>
+							</a>
+						</li>
+					</ul>
+				</footer>
+			</article>
 
+			<%}%>
 
-    <div class="row">
-    <div class="col-lg-8">
-     <div class="carousel" id="carousel-one" data-ride="carousel">
 
-         <div class="carousel-inner" >
+				<!-- Pagination -->
+				<ul class="actions pagination">
+					<li>
+						<a href="./article?page=<%=prevpage%>" class="disabled button big previous">Previous Page</a>
+					</li>
+					<li>
+						<a href="./article?page=<%=nextpage%>" class="button big next">Next Page</a>
+					</li>
 
-             <div class="carousel-item active h-24">
 
-                 <img src="../../img/banner1.jpg">
+				</ul>
 
-             </div>
+	</div>
 
-             <div class="carousel-item h-24">
+	<% include sider%>
 
-                 <img src="../../img/banner2.jpg">
+		<% include footer%>
 
-             </div>
-    
-         </div>
 
+			<script>
 
-         <ul class="carousel-indicators">
 
-             <li data-slide-to="0" data-target="#carousel-one" class="active"></li>
-             <li data-slide-to="1" data-target="#carousel-one"></li>
-          
+				$(function () {
 
-         </ul>
+					//分页功能
 
-<a href="#carousel-one" class="carousel-control-prev" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
+					(function () {
 
-</a>
 
-<a href="#carousel-one" class="carousel-control-next" data-slide="next">
-             <span class="carousel-control-next-icon"></span>
+						let total = JSON.parse("<%=total%>");
 
-</a>
+						let nextpage = JSON.parse("<%=nextpage%>");
+						let prevpage = JSON.parse("<%=prevpage%>");
 
-     </div>
 
-        </div>
+						if (prevpage >= 0) { $(".pagination>li:nth-child(1)>a").removeClass("disabled") }
 
-    <div class="col-lg-4">
+						if (Math.ceil(total / 3) <= nextpage) { $(".pagination>li:nth-child(2)>a").addClass("disabled") }
 
-       <div id="carousel-two" class="carousel" data-ride="carousel">
+					}());
 
-           <div class="carousel-inner">
 
-                   <div class="carousel-item active  h-12"><img src="../../img/bannersmall1.png"></div>
-                   <div class="carousel-item  h-12"><img src="../../img/bannersmall2.png"></div>
+					//查询功能
+					(function () {
 
-               </div>
+						$("input[name=query]").blur(function () {
 
-<ul class="carousel-indicators">
-    <li class="active" data-slide-to="0" data-target="#carousel-two"></li>
-    <li  data-slide-to="1" data-target="#carousel-two"></li>
 
-</ul>
-       </div>
-<!--轮播2-->
-        <div id="carousel-three" class="carousel" data-ride="carousel">
+							let kword = $(this).val();
 
-            <div class="carousel-inner">
 
-                <div class="carousel-item active  h-12"><img src="../../img/bannersmall2.png"></div>
-                <div class="carousel-item  h-12"><img src="../../img/bannersmall1.png"></div>
-         
-            </div>
+							if (kword) {
+								window.location = `./search?kword=${kword}`;
+							}
+						})
 
-            <ul class="carousel-indicators">
-                <li class="active" data-slide-to="0" data-target="#carousel-three"></li>
-                <li  data-slide-to="1" data-target="#carousel-three"></li>
-               
-            </ul>
 
-        </div>
-        <!--轮播3-->
-    </div>
+					}());
 
+					//回到顶部功能
 
-    </div>
 
-    <!--banner结束-->
+					
+					
+				
 
+				})
 
-    <div class="row">
-        <div class="col-lg-2 p-lg-5">
-            <ul class="list-group list-unstyled">
 
-                <li class="list-group-item active"><a href="#" class="text-light ">前端</a></li>
-                <li class="list-group-item"><a href="#">后端</a></li>
-                <li class="list-group-item"><a href="#">移动开发</a></li>
-                <li class="list-group-item"><a href="#">大数据</a></li>
-                <li class="list-group-item"><a href="#">设计</a></li>
-                <li class="list-group-item"><a href="#">运营</a></li>
-
-
-            </ul>
-
-
-
-        </div>
-
-
-
-
-        <div class="col-lg-10 col-md-8 col-sm-12 p-lg-5">
-            <ul class="nav nav-tabs">
-
-                <li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="tab">html5</a></li>
-                <li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">css3</a></li>
-                <li class="nav-item"><a href="#tab3" class="nav-link" data-toggle="tab" data-target="tab3">JS基础</a></li>
-                <li class="nav-item"><a href="#tab4" class="nav-link" data-toggle="tab" data-target="tab4">JS高级</a></li>
-                <li class="nav-item"><a href="#tab5" class="nav-link" data-toggle="tab" data-target="tab5">bootstrap进阶</a></li>
-                <li class="nav-item"><a href="#tab6" class="nav-link" data-toggle="tab" data-target="tab5">最新项目</a></li>
-            </ul>
-            <div class="tab-content">
-
-
-<!--第一个选项卡的内容开始-->
-                <div class="tab-pane active" id="tab1">
-
-                    <ul class="list-group list-unstyled">
-
-<% for(var i in article) {%>
-                   
-                          <li class="list-group-item p-lg-5 bg-light text-dark rounded mb-3">
-                            <div class="media">
-                                <img src="../../img/2x2.png" class="rounded">
-                                <div class="media-body ml-5">
-                            <h4 class="mb-4"><a href="./detail?id=<%=article[i]._id%>"><%=article[i].title%></a></h4>
-                            <p>
-                              
-                                列表相关class
-                                list-unstyled list-group 写在ul中
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色</p>
-                                
-                                <button class="btn btn-danger mt-2"><a href="detail.html" class="text-light">阅读全文</a></button>
-</div></div>
-                            
-
-                        </li>
-<% }%>
-                    </ul>
-                    <br>
-                    <div class="text-center">
-                        <button class="btn btn-danger ">加载更多</button>
-
-                    </div>
-
-                </div>
-
-<!--第一个选项卡的内容结束-->
-
-<!--第二个选项卡的内容开始-->
-                <div class="tab-pane" id="tab2">
-
-                    <ul class="navbar-nav">
-                   <li class="list-group-item p-lg-5 bg-dark text-light rounded mb-3">
-                            <div class="media">
-                                <img src="../../img/2x2.png" class="rounded">
-                                <div class="media-body ml-5">
-                            <h4 class="mb-4">(一) Css的一些坑</h4>
-                            <p>列表相关class
-                                list-unstyled list-group 写在ul中
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色</p>
-                                <button class="btn btn-danger mt-2"><a href="detail.html" class="text-light">阅读全文</a></button>
-</div></div>
-                            
-
-                        </li>
-                       <li class="list-group-item p-lg-5 bg-light text-dark rounded mb-3">
-                            <div class="media">
-                                <img src="../../img/2x2.png" class="rounded">
-                                <div class="media-body ml-5">
-                            <h4 class="mb-4">(一) Css的一些坑</h4>
-                            <p>列表相关class
-                                list-unstyled list-group 写在ul中
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色</p>
-                                <button class="btn btn-danger mt-2"><a href="detail.html" class="text-light">阅读全文</a></button>
-</div></div>
-                            
-
-                        </li>
-                       <li class="list-group-item p-lg-5 bg-light text-dark rounded mb-3">
-                            <div class="media">
-                                <img src="../../img/2x2.png" class="rounded">
-                                <div class="media-body ml-5">
-                            <h4 class="mb-4">(一) Css的一些坑</h4>
-                            <p>列表相关class
-                                list-unstyled list-group 写在ul中
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色
-                                list-group-item 列表项
-                                table相关的样式
-                                table类名，让后面的td有上边框
-                                table-bordered 带边框的表格
-                                table-striped 隔行变色</p>
-                                <button class="btn btn-danger mt-2"><a href="detail.html" class="text-light">阅读全文</a></button>
-</div></div>
-                            
-
-                        </li>
-
-
-                    </ul>
-                    <br>
-                    <div class="text-center">
-                        <button class="btn btn-danger ">加载更多</button>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        </div></div>
-            <!--右侧-->
-
-
-
-
-
-        <div class="col-lg-3">
-
-
-
-
-                <ul class="nav nav-tabs">
-
-                    <li class="nav-item "><a href="#menu1" class="nav-link active text-center" data-toggle="tab">快讯</a></li>
-                    <li class="nav-item "><a href="#menu2" class="nav-link text-center" data-toggle="tab">动态</a></li>
-
-                </ul>
-                <div class="tab-content">
-
-                    <div id="menu1" class="tab-pane active">
-                        <ul class="list-group">
-                            <li class="list-group-item">sdasd</li>
-                            <li class="list-group-item">sadsd</li>
-                            <li class="list-group-item">adsad</li>
-                            <li class="list-group-item">sdasd</li>
-                        </ul>
-
-                    </div>
-                    <div id="menu2" class="tab-pane">  <ul class="list-group">
-                        <li class="list-group-item">sdasd</li>
-                        <li class="list-group-item">sadsd</li>
-                        <li class="list-group-item">adsad</li>
-                        <li class="list-group-item">sdasd</li>
-                    </ul></div>
-                    <div id="menu3" class="tab-pane">  <ul class="list-group">
-                        <li class="list-group-item">sdasd</li>
-                        <li class="list-group-item">sadsd</li>
-                        <li class="list-group-item">adsad</li>
-                        <li class="list-group-item">sdasd</li>
-                    </ul></div>
-                    <div id="menu4" class="tab-pane"><ul class="list-group">
-                        <li class="list-group-item">sdasd</li>
-                        <li class="list-group-item">sadsd</li>
-                        <li class="list-group-item">adsad</li>
-                        <li class="list-group-item">sdasd</li>
-                    </ul></div>
-                </div>
-
-
-
-
-
-
-                <ul class="list-group bg-light mt-lg-4">
-                    <h4 class="m-lg-4">相关推荐</h4>
-                    <li class="list-group-item px-lg-4 mb-2 border-0 bg-light text-dark rounded">
-                        <div class=" media">
-                            <img src="../../img/vue.png" class="rounded w-25 align-self-center">
-                            <div class="ml-4 media-body">
-                                <a href="#">Vue.js快速入门</a>
-                                <p class="mt-1">1.6万次阅读 56条评论</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-lg-4 mb-2 border-0 bg-light text-dark rounded">
-                        <div class=" media">
-                            <img src="../../img/java.jpg" class="rounded w-25 align-self-center">
-                            <div class="ml-4 media-body">
-                                <a href="#">Java高级开发</a>
-                                <p class="mt-1">1.6万次阅读 56条评论</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-lg-4 mb-2 border-0 bg-light text-dark rounded">
-                        <div class=" media">
-                            <img src="../../img/angular.png" class="rounded w-25 align-self-center">
-                            <div class="ml-4 media-body">
-                                <a href="#">Angular最新指南</a>
-                                <p class="mt-1">1.6万次阅读 56条评论</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-lg-4 border-0 bg-light text-dark rounded">
-                        <div class=" media">
-                            <img src="../../img/1x1.png" class="rounded w-25 align-self-center">
-                            <div class="ml-4 media-body">
-                                <a href="#">哈登暴砍60分</a>
-                                <p class="mt-1">1.6万次阅读 56条评论</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-
-                <ul class="list-group mt-lg-4 bg-light">
-                    <h4 class="m-lg-4">24小时热闻</h4>
-                    <li class="list-group-item border-0">
-
-
-
-                        <a href="#" class="nav-link">哈登再度暴砍60分</a>
-                        <p class="nav-link">7.8万次阅读，198人评论，59人转发，120个赞</p>
-
-                    </li>
-
-                </ul>
-
-
-
-
-
-
-
-        </div>
-
-    </div>
-
-
-    <footer class="text-center py-lg-4">
-
-        <p class="text-secondary">hansu资讯版权所有 &copy; 2014-2020 More Templates</p>
-
-    </footer>
-</div>
-</body>
-</html>
+			</script>
+			</body>
+
+			</html>

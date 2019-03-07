@@ -16,7 +16,6 @@ Admintor.find({name:$admin_name},(err,result)=>{
 if(result[0]){
 if(result[0].password==$admin_pwd){ res.redirect("index");}
 else{res.redirect("login");}
-
 }
 
 else{res.redirect("login");}

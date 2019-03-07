@@ -1,5 +1,16 @@
 const express = require("express");
+
 const server = express();
+var multer=require('multer');
+
+
+//解析post请求
+const bodyParser=require("body-parser");
+
+server.use(bodyParser.urlencoded({
+    extend:false
+}));
+
 
 
 //模板引擎配置开始
@@ -11,6 +22,11 @@ server.set("view engine", "ejs");//配置引擎的模板为ejs
 
 server.use(express.static(path.join("static")));
 //模板引擎配置结束
+
+//上传配置
+const objMulter=multer();
+server.use(objMulter.any());
+
 
 
 
@@ -24,11 +40,14 @@ server.listen(3000, (err) => {
 
 
 
-server.use(express.static("./views/web"));
+// server.use(express.static("./views/web"));
 
 const webRouter=require("./routes/web");
 
 server.use("/web",webRouter);
+
+
+
 
 
 

@@ -1,0 +1,70 @@
+<% include header%>
+	<!-- Main -->
+	<div id="main">
+
+        <h2>抱歉!关于<span style="color:rgb(51, 240, 208)"><%=kword%></span>本站暂时没有搜索的结果</h2>
+	
+     <h3>猜你喜欢:</h3>
+
+
+     <% for(var i in article){%>
+        <article class="post">
+          
+                <div class="title">
+                    <h2>
+                        <a href="#">
+                            <%=article[i].title%>
+                        </a>
+                    </h2>
+                    <p>
+                        <%=article[i].summary%>
+                    </p>
+                </div>
+              
+            
+          
+
+
+            <!--<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+            <footer>
+                <ul class="actions">
+                    <li>
+                        <a href="./detail?id=<%=article[i]._id%>" class="button big">继续阅读&nbsp;
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="stats">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-tags"></i>
+                            <%=article[i].cate%>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon fa-heart">
+                            <%=article[i].n_comment%>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon fa-comment">
+                            <%=article[i].n_like%>
+                        </a>
+                    </li>
+                </ul>
+            </footer>
+        </article>
+
+        <%}%>
+
+
+			
+
+	</div>
+
+<%include footer%>
+	
+			
+			</body>
+
+			</html>

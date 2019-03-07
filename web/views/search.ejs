@@ -1,0 +1,42 @@
+<% include header%>
+	<!-- Main -->
+	<div id="main">
+
+        <h2>关于<span style="color:rgb(51, 240, 208)"><%=kword%></span>搜索的结果:共<%=total%>条结果</h2>
+        <hr>
+		<!-- Post -->
+		<% for(var i in article){%>
+			<article class="post">
+			
+					<div class="title">
+						<h2>
+							<a href="#">
+								<%=article[i].title%>
+							</a>
+						</h2>
+						<p>
+							<%=article[i].summary%>
+						</p>
+					</div>
+					
+				
+			
+
+
+			
+			</article>
+
+			<%}%>
+
+
+				<!-- Pagination -->
+			
+
+	</div>
+
+    <% include footer%>
+	
+			
+			</body>
+
+			</html>
