@@ -1,108 +1,134 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>hansu的个人博客</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+	<title>hansu的个人博客</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<!--markdown样式-->
+	<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
+	<!--高亮-->
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css">
+
+	
+
+	<!--网站icon-->
+	<link rel="icon" href="https://hansu-1253325863.cos.ap-shanghai.myqcloud.com/newblog/web/icon-img/icon.png">
+
+
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="../../css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+</head>
+
+<body>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1>
+				<a href="#">Hansu Blog</a>
+			</h1>
+			<nav class="links">
+				<ul>
+					<li>
+						<a href="/">首页</a>
+					</li>
+					<li>
+						<a href="./demo">个人demo</a>
+					</li>
+					<li>
+						<a href="./tool">个人工具集</a>
+					</li>
+					<li>
+						<a href="./message">留言板<a href="#" class="badge badge-info text-white">5</a></a>
+					</li>
+
+				</ul>
+			</nav>
+			<nav class="main">
+				<ul>
+					<li class="search">
+						<a class="fa-search" href="#search">Search</a>
+						<form id="search" method="get" action="./search" onSubmit="return isGet()">
+							<input type="text" name="kword" placeholder="Search" />
+							<span class="delete"></span>
+							<input type="hidden" />
+						</form>
+					</li>
+					<li class="menu">
+						<a class="fa-bars" href="#menu">Menu</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<section id="menu">
+
+			<!-- Search -->
+			<section>
+				<form class="search" method="get" action="./search">
+					<input type="text" name="kword" placeholder="Search" />
+					<span class="delete"></span>
+					<input type="hidden" />
+				</form>
+			</section>
+
+			<!-- Links -->
+			<section>
+				<ul class="links">
+					<li>
+						<a href="/">首页</a>
+					</li>
+					<li>
+						<a href="./demo">个人demo</a>
+					</li>
+					<li>
+						<a href="./tool">个人工具集</a>
+					</li>
+					<li>
+						<a href="./message">留言板<a href="#" class="badge badge-info text-white">5</a></a>
+					</li>
+
+				</ul>
+			</section>
+
+			<!-- Actions -->
+			<section>
+				<ul class="actions vertical">
+					<li>
+						<a href="#" class="button big fit">Log In</a>
+					</li>
+				</ul>
+			</section>
+
+		</section>
 		
-        
-        <!--markdown样式-->
-        <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+		<div class="copyrights">Collect from
+			<a href="http://www.cssmoban.com/">hansu</a>
+		</div>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css"><!--高亮-->
-    
-        <link rel="stylesheet" href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css">
-    
 
-        <!--网站icon-->
-		<link rel="icon" href="https://hansu-1253325863.cos.ap-shanghai.myqcloud.com/newblog/web/icon-img/icon.png">
-		
+		<script>
 
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../../css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-	</head>
-	<body>
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="#">Hansu Blog</a></h1>
-						<nav class="links">
-							<ul>
-								<li><a href="#">首页</a></li>
-								<li><a href="#">个人demo</a></li>
-								<li><a href="#">常用代码块</a></li>
-								<li><a href="#">更多资源</a></li>
-								
-							</ul>
-						</nav>
-						<nav class="main">
-								<ul>
-									<li class="search">
-										<a class="fa-search" href="#search">Search</a>
-										<form id="search" method="get" action="#">
-											<input type="text" name="query" placeholder="Search" />
-										</form>
-									</li>
-									<li class="menu">
-										<a class="fa-bars" href="#menu">Menu</a>
-									</li>
-								</ul>
-							</nav>
-					</header>
-
-				<!-- Menu -->
-					<section id="menu">
-
-						<!-- Search -->
-							<section>
-								<form class="search" method="get" action="#">
-									<input type="search" name="query" placeholder="Search" />
-									<input type="hidden"/>
-								</form>
-							</section>
-
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li>
-										<a href="#">
-											<h3>首页</h3>
-										
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>个人demo</h3>
-											
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>常用代码块</h3>
-										
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>更多资源</h3>
-										
-										</a>
-									</li>
-								</ul>
-							</section>
-
-						<!-- Actions -->
-							<section>
-								<ul class="actions vertical">
-									<li><a href="#" class="button big fit">Log In</a></li>
-								</ul>
-							</section>
-
-					</section>
-                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >hansu</a></div>
+			function isGet() {
+				if($("input[name=kword]").val()=="")
+				{$("input[name=kword]").attr("placeholder","no kword!!!");
+					return false;}
+				else{
+					return true;
+				}
+			};
+			
+		</script>

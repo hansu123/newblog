@@ -1,141 +1,113 @@
 <% include header%>
-	<!-- Main -->
-	<div id="main"  data-mcs-theme="dark-thick" >
+<!-- Main -->
+<div id="main">
 
-		<!-- Post -->
-		<% for(var i in article){%>
-			<article class="post">
-				<header>
-					<div class="title">
-						<h2>
-							<a href="#">
-								<%=article[i].title%>
-							</a>
-						</h2>
-						<p>
-							<%=article[i].summary%>
-						</p>
-					</div>
-					<div class="meta">
-						<time class="published" datetime="2015-11-01">
-							<%=article[i].postTime%>
-						</time>
-						<a href="#" class="author">
-							<span class="name">
-								<%=article[i].author%>
-							</span>
-							<img src="../../img/web/avatar.jpg" alt="" />
-						</a>
-					</div>
-				</header>
-				<a href="#" class="image featured">
-					<img src="../../upload/<%=article[i].cover_img%>" alt="" />
+	<!-- Post -->
+	<% for(var i in article){%>
+	<article class="post">
+		<header>
+			<div class="title">
+				<h2>
+					<a href="./detail?id=<%=article[i]._id%>">
+						<%=article[i].title%>
+					</a>
+				</h2>
+				<p>
+					<%=article[i].summary%>
+				</p>
+			</div>
+			<div class="meta">
+				<time class="published" datetime="2015-11-01">
+					<%=article[i].postTime%>
+				</time>
+				<a href="#" class="author">
+					<span class="name">
+						<%=article[i].author%>
+					</span>
+					<img src="../../img/web/avatar.jpg" alt="" />
 				</a>
+			</div>
+		</header>
+		<a href="#" class="image featured">
+			<!--<img src="../../upload/<%=article[i].cover_img%>" alt="" />-->
+
+			<img src="../../img/web/loading.gif" alt="" data-src="../../upload/<%=article[i].cover_img%>"/>
+		</a>
 
 
-				<!--<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
-				<footer>
-					<ul class="actions">
-						<li>
-							<a href="./detail?id=<%=article[i]._id%>" class="button big">继续阅读&nbsp;
-								<i class="fa fa-arrow-right"></i>
-							</a>
-						</li>
-					</ul>
-					<ul class="stats">
-						<li>
-							<a href="#">
-								<i class="fa fa-tags"></i>
-								<%=article[i].cate%>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="icon fa-heart">
-								<%=article[i].n_comment%>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="icon fa-comment">
-								<%=article[i].n_like%>
-							</a>
-						</li>
-					</ul>
-				</footer>
-			</article>
+		<!--<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>-->
+		<footer>
+			<ul class="actions">
+				<li>
+					<a href="./detail?id=<%=article[i]._id%>" class="button big">继续阅读&nbsp;
+						<i class="fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
+			<ul class="stats">
+				<li>
+					<a href="#">
+						<i class="fa fa-tags"></i>
+						<%=article[i].cate%>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="icon fa-heart">
+						<%=article[i].n_comment%>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="icon fa-comment">
+						<%=article[i].n_like%>
+					</a>
+				</li>
+			</ul>
+		</footer>
+	</article>
 
-			<%}%>
-
-
-				<!-- Pagination -->
-				<ul class="actions pagination">
-					<li>
-						<a href="./article?page=<%=prevpage%>" class="disabled button big previous">Previous Page</a>
-					</li>
-					<li>
-						<a href="./article?page=<%=nextpage%>" class="button big next">Next Page</a>
-					</li>
+	<%}%>
 
 
-				</ul>
-
-	</div>
-
-	<% include sider%>
-
-		<% include footer%>
-
-
-			<script>
+	<!-- Pagination -->
+	<ul class="actions pagination">
+		<li>
+			<a href="./article?page=<%=prevpage%>" class="disabled button big previous">Previous Page</a>
+		</li>
+		<li>
+			<a href="./article?page=<%=nextpage%>" class="button big next">Next Page</a>
+		</li>
 
 
-				$(function () {
+	</ul>
 
-					//分页功能
+</div>
 
-					(function () {
+<% include sider%>
 
+<% include footer%>
+<script>
+    //分页功能
 
-						let total = JSON.parse("<%=total%>");
-
-						let nextpage = JSON.parse("<%=nextpage%>");
-						let prevpage = JSON.parse("<%=prevpage%>");
-
-
-						if (prevpage >= 0) { $(".pagination>li:nth-child(1)>a").removeClass("disabled") }
-
-						if (Math.ceil(total / 3) <= nextpage) { $(".pagination>li:nth-child(2)>a").addClass("disabled") }
-
-					}());
+(function () {
 
 
-					//查询功能
-					(function () {
+let total = JSON.parse("<%=total%>");
 
-						$("input[name=query]").blur(function () {
-
-
-							let kword = $(this).val();
+let nextpage = JSON.parse("<%=nextpage%>");
+let prevpage = JSON.parse("<%=prevpage%>");
 
 
-							if (kword) {
-								window.location = `./search?kword=${kword}`;
-							}
-						})
+if (prevpage >= 0) {
+	$(".pagination>li:nth-child(1)>a").removeClass("disabled")
+}
 
+if (Math.ceil(total / 3) <= nextpage) {
+	$(".pagination>li:nth-child(2)>a").addClass("disabled")
+}
 
-					}());
+}());
+</script>
 
-					//回到顶部功能
+</body>
 
-
-					
-					
-				
-
-				})
-
-
-			</script>
-			</body>
-
-			</html>
+</html>

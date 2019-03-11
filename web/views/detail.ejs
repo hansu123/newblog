@@ -6,12 +6,12 @@
     <article class="post">
             <header>
                 <div class="title">
-                    <h2><a href="#"><%-detail[0].title%></a></h2>
+                    <h2><a href="#"><%=detail[0].title%></a></h2>
                     <p><%-detail[0].summary%></p>
                 </div>
                 <div class="meta">
-                    <time class="published" datetime="2015-10-25">October 25, 2015</time>
-                    <a href="#" class="author"><span class="name">Jane Doe</span><img src="../../img/web/avatar.jpg" alt="" /></a>
+                    <time class="published" datetime="2015-10-25"><%=detail[0].postTime%></time>
+                    <a href="#" class="author"><span class="name"><%=detail[0].author%></span><img src="../../img/web/avatar.jpg" alt="" /></a>
                 </div>
             </header>
            
@@ -31,7 +31,7 @@
 
 
     
-        <% include sider%>
+      
                     
         <% include footer%>
    

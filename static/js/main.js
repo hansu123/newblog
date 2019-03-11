@@ -46,7 +46,7 @@
 			if (skel.vars.IEVersion <= 9)
 				$main.insertAfter($sidebar);
 
-		// Menu.
+		// 菜单
 			$menu
 				.appendTo($body)
 				.panel({
@@ -80,22 +80,32 @@
 
 							// Focus input.
 								$search_input.focus();
+								
 
 						}
 
 				});
 
+
+
+		//搜索框优化
 			$search_input
 				.on('keydown', function(event) {
-
+                    $(this).attr("placeholder","Search");
 					if (event.keyCode == 27)
-						$search_input.blur();
+						$search_input.blur();		
 
-				})
-				.on('blur', function() {
-					window.setTimeout(function() {
+				}).on('keyup',function(event){
+					if($(this).val()!=""){$("#search .delete").css("display","block")}
+					else{$("#search .delete").css("display","none")}
+				});
+				$search.on('mouseleave', function() {
+
+					if($(this).find("[name=kword]").val()=="")
+					{window.setTimeout(function() {
 						$search.removeClass('visible');
-					}, 100);
+					}, 10000);}
+					
 				});
 
 		// Intro.
@@ -109,6 +119,34 @@
 					.on('-large', function() {
 						$intro.prependTo($sidebar);
 					});
+
+
+		 //点赞功能
+
+
+		 (function(){
+
+           
+			let clicked=false;
+
+			$("footer>.stats>li>.fa-heart").on("click",function(event){
+
+				event.preventDefault();
+	  
+				let likeNumber=Number($(this).text());
+	  
+	  
+				if(!clicked){$(this).text(++likeNumber);clicked=true;}
+	  
+				else{$(this).text(--likeNumber);clicked=false;}
+				
+			   })
+
+
+		 }())
+		 
+
+					
 
 	});
 
